@@ -22,8 +22,8 @@ public class iteractiveSelectionOfThreshold {
 
         int[] frequency = new int[16];
         frequency[0] = 0;
-        frequency[1] = 1;
-        frequency[2] = 0;
+        frequency[1] = 0;
+        frequency[2] = 3;
         frequency[3] = 101;
         frequency[4] = 380;
         frequency[5] = 11;
@@ -46,7 +46,49 @@ public class iteractiveSelectionOfThreshold {
     public static void alg(int [] greyLevels,int[] frequency){
 
         int threshold = getRandom(greyLevels); // might have to change this manually or create another function to figure this out
-        System.out.println(threshold);
+        int count =0;
+
+        System.out.println("Step 1: Let θ-"+count+" = "+ threshold); //out of loop
+
+
+
+        System.out.println();//loop starts here
+        System.out.println();
+        System.out.println("Iteration "+count+": (θ = "+threshold+")");
+        System.out.println();
+        System.out.println("Step 2: 0 <= g <= "+threshold+" froms R1 & g >"+threshold+" are the R2");
+        System.out.println();
+
+        System.out.print("μ1 = (" );
+
+        int []  μ1Numerator = new int[10]; //change this to random
+        int []  μ1Denominator = new int[frequency.length-1]; //change this to random
+
+
+        for(int x= 0; x<=9;x++){
+            μ1Numerator[x] = greyLevels[x]*frequency[x];
+            System.out.print(μ1Numerator[x]+" + ");
+
+        }
+        System.out.print(") / ");
+        for(int x= 0; x<=9;x++){
+            μ1Denominator[x] = μ1Denominator[x]+frequency[x];
+            System.out.print(μ1Denominator[x]+" + ");
+        }
+        System.out.print(") = ");
+        double sum1 = 0;
+        for(int x=0; x< μ1Numerator.length; x++){
+            sum1 = sum1 +  μ1Numerator[x];
+        }
+
+        double sum2 = 0;
+        for(int x=0; x< μ1Numerator.length; x++){
+            sum2 = sum2 +  μ1Denominator[x];
+        }
+        System.out.print((double) Math.round((sum1/sum2)*100)/100);
+
+        double firstMean = (double) Math.round((sum1/sum2)*100)/100;
+
     }
 
     public static int getRandom(int[] array) {
