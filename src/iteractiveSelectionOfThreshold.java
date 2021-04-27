@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class iteractiveSelectionOfThreshold {
     public static void main(String[] args) {
         int[] greyLevels = new int[16];
@@ -38,9 +40,17 @@ public class iteractiveSelectionOfThreshold {
 
 
 
-        alg();
+        alg(greyLevels,frequency);
     }
 
-    public static void alg(){
+    public static void alg(int [] greyLevels,int[] frequency){
+
+        int threshold = getRandom(greyLevels); // might have to change this manually or create another function to figure this out
+        System.out.println(threshold);
+    }
+
+    public static int getRandom(int[] array) {
+        int rnd = new Random().nextInt(array.length);
+        return array[rnd];
     }
 }
