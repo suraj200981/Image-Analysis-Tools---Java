@@ -49,7 +49,7 @@ public class iteractiveSelectionOfThreshold {
 
         System.out.println("Step 1: Let θ-" + count + " = " + threshold); //out of loop
 
-
+    do {
         System.out.println();//loop starts here
         System.out.println();
         System.out.println("Iteration " + count + ": (θ = " + threshold + ")");
@@ -57,10 +57,14 @@ public class iteractiveSelectionOfThreshold {
         System.out.println("Step 2: 0 <= g <= " + threshold + " froms R1 & g >" + threshold + " are the R2");
         System.out.println();
 
+
+        System.out.println("Step 3: ");
+        System.out.println();
+
         System.out.print("μ1 = (");
 
-        int[] μ1Numerator = new int[10]; //change this to random
-        int[] μ1Denominator = new int[frequency.length - 1]; //change this to random
+        int[] μ1Numerator = new int[16]; //change this to random
+        int[] μ1Denominator = new int[frequency.length]; //change this to random
 
 
         for (int x = 0; x <= 9; x++) {
@@ -120,10 +124,17 @@ public class iteractiveSelectionOfThreshold {
         }
         System.out.print((double) Math.round((sum3 / sum4) * 100) / 100);
 
-        double secondMean = (double) Math.round((sum1 / sum2) * 100) / 100;
+        double secondMean = (double) Math.round((sum3 / sum4) * 100) / 100;
+        System.out.println();
         System.out.println();
 
+        System.out.println("Step 4: ");
+        System.out.println();
+        System.out.println(firstMean + " + " + secondMean + " / " + "2 = " + (firstMean + secondMean) / 2);
+        System.out.println("Rounded to = " + Math.round((firstMean + secondMean) / 2));
 
+        threshold = (int) Math.round((firstMean + secondMean) / 2);
+    }while( )
 
     }
 
