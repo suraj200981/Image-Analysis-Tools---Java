@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 public class iteractiveSelectionOfThreshold {
@@ -44,17 +45,19 @@ public class iteractiveSelectionOfThreshold {
 
     public static void alg(int[] greyLevels, int[] frequency) {
 
-        int threshold = getRandom(greyLevels); // might have to change this manually or create another function to figure this out
+        int initalThreshold = getRandom(greyLevels); // might have to change this manually or create another function to figure this out
         int count = 0;
+        ArrayList<Integer> newThresholds = new ArrayList<Integer>(); // Create an ArrayList object
 
-        System.out.println("Step 1: Let θ-" + count + " = " + threshold); //out of loop
 
-    do {
+        System.out.println("Step 1: Let θ-" + count + " = " + initalThreshold); //out of loop
+
+    while(true) {
         System.out.println();//loop starts here
         System.out.println();
-        System.out.println("Iteration " + count + ": (θ = " + threshold + ")");
+        System.out.println("Iteration " + count + ": (θ = " + initalThreshold + ")");
         System.out.println();
-        System.out.println("Step 2: 0 <= g <= " + threshold + " froms R1 & g >" + threshold + " are the R2");
+        System.out.println("Step 2: 0 <= g <= " + initalThreshold + " froms R1 & g >" + initalThreshold + " are the R2");
         System.out.println();
 
 
@@ -67,13 +70,13 @@ public class iteractiveSelectionOfThreshold {
         int[] μ1Denominator = new int[frequency.length]; //change this to random
 
 
-        for (int x = 0; x <= 9; x++) {
+        for (int x = 0; x <= initalThreshold; x++) {
             μ1Numerator[x] = greyLevels[x] * frequency[x];
             System.out.print(μ1Numerator[x] + " + ");
 
         }
         System.out.print(") / ");
-        for (int x = 0; x <= 9; x++) {
+        for (int x = 0; x <= initalThreshold; x++) {
             μ1Denominator[x] = μ1Denominator[x] + frequency[x];
             System.out.print(μ1Denominator[x] + " + ");
         }
@@ -101,13 +104,13 @@ public class iteractiveSelectionOfThreshold {
         int[] μ2Denominator = new int[frequency.length]; //change this to random
 
 
-        for (int x = 10; x < greyLevels.length; x++) {
+        for (int x = initalThreshold+1; x < greyLevels.length; x++) {
             μ2Numerator[x] = greyLevels[x] * frequency[x];
             System.out.print(μ2Numerator[x] + " + ");
 
         }
         System.out.print(") /");
-        for (int x = 10; x < greyLevels.length; x++) {
+        for (int x = initalThreshold+1; x < greyLevels.length; x++) {
             μ2Denominator[x] = +μ2Denominator[x] + frequency[x];
             System.out.print(μ2Denominator[x] + " + ");
 
@@ -133,8 +136,15 @@ public class iteractiveSelectionOfThreshold {
         System.out.println(firstMean + " + " + secondMean + " / " + "2 = " + (firstMean + secondMean) / 2);
         System.out.println("Rounded to = " + Math.round((firstMean + secondMean) / 2));
 
-        threshold = (int) Math.round((firstMean + secondMean) / 2);
-    }while( )
+        initalThreshold = (int) Math.round((firstMean + secondMean) / 2);
+        newThresholds.add(initalThreshold);
+
+        if(newThresholds.size()>=2){
+            if(initalThreshold==newThresholds.get(newThresholds.size()-1)){
+                break;
+            }
+        }
+    }
 
     }
 
