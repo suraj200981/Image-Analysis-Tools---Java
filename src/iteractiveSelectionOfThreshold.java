@@ -88,6 +88,41 @@ public class iteractiveSelectionOfThreshold {
         System.out.print((double) Math.round((sum1/sum2)*100)/100);
 
         double firstMean = (double) Math.round((sum1/sum2)*100)/100;
+        System.out.println();
+
+        ///////////////////////////////////////////////////////////
+        System.out.println();
+        System.out.println();
+        System.out.print("μ2 = (" );
+
+        int []  μ2Numerator = new int[10]; //change this to random
+        int []  μ2Denominator = new int[10]; //change this to random
+
+
+        for(int x= 10; x<greyLevels.length;x++){
+            μ2Numerator[x] = greyLevels[x]*frequency[x];
+            System.out.print(μ1Numerator[x]+" + ");
+        }
+        System.out.print(") / ");
+        for(int x= 10; x<greyLevels.length;x++){
+            μ2Denominator[x] = μ2Denominator[x]+frequency[x];
+            System.out.print(μ1Denominator[x]+" + ");
+        }
+        System.out.print(") = ");
+        double sum3 = 0;
+        for(int x=0; x< μ2Numerator.length; x++){
+            sum3 = sum3 +  μ2Numerator[x];
+        }
+
+        double sum4 = 0;
+        for(int x=0; x< μ2Numerator.length; x++){
+            sum4 = sum4 +  μ2Denominator[x];
+        }
+        System.out.print((double) Math.round((sum1/sum2)*100)/100);
+
+        double secondMean = (double) Math.round((sum1/sum2)*100)/100;
+
+        ///////////////////////////////////////////////////////////
 
     }
 
