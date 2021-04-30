@@ -138,9 +138,10 @@ public class iteractiveSelectionOfThreshold {
 
         initalThreshold = (int) Math.round((firstMean + secondMean) / 2);
         newThresholds.add(initalThreshold);
+        count++;
 
         if(newThresholds.size()>=2){
-            if(initalThreshold==newThresholds.get(newThresholds.size()-1)){
+            if(initalThreshold==newThresholds.get(newThresholds.size()-2)){
                 break;
             }
         }
