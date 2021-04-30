@@ -39,90 +39,91 @@ public class iteractiveSelectionOfThreshold {
         frequency[15] = 3;
 
 
-
-        alg(greyLevels,frequency);
+        alg(greyLevels, frequency);
     }
 
-    public static void alg(int [] greyLevels,int[] frequency){
+    public static void alg(int[] greyLevels, int[] frequency) {
 
         int threshold = getRandom(greyLevels); // might have to change this manually or create another function to figure this out
-        int count =0;
+        int count = 0;
 
-        System.out.println("Step 1: Let θ-"+count+" = "+ threshold); //out of loop
-
+        System.out.println("Step 1: Let θ-" + count + " = " + threshold); //out of loop
 
 
         System.out.println();//loop starts here
         System.out.println();
-        System.out.println("Iteration "+count+": (θ = "+threshold+")");
+        System.out.println("Iteration " + count + ": (θ = " + threshold + ")");
         System.out.println();
-        System.out.println("Step 2: 0 <= g <= "+threshold+" froms R1 & g >"+threshold+" are the R2");
+        System.out.println("Step 2: 0 <= g <= " + threshold + " froms R1 & g >" + threshold + " are the R2");
         System.out.println();
 
-        System.out.print("μ1 = (" );
+        System.out.print("μ1 = (");
 
-        int []  μ1Numerator = new int[10]; //change this to random
-        int []  μ1Denominator = new int[frequency.length-1]; //change this to random
+        int[] μ1Numerator = new int[10]; //change this to random
+        int[] μ1Denominator = new int[frequency.length - 1]; //change this to random
 
 
-        for(int x= 0; x<=9;x++){
-            μ1Numerator[x] = greyLevels[x]*frequency[x];
-            System.out.print(μ1Numerator[x]+" + ");
+        for (int x = 0; x <= 9; x++) {
+            μ1Numerator[x] = greyLevels[x] * frequency[x];
+            System.out.print(μ1Numerator[x] + " + ");
 
         }
         System.out.print(") / ");
-        for(int x= 0; x<=9;x++){
-            μ1Denominator[x] = μ1Denominator[x]+frequency[x];
-            System.out.print(μ1Denominator[x]+" + ");
+        for (int x = 0; x <= 9; x++) {
+            μ1Denominator[x] = μ1Denominator[x] + frequency[x];
+            System.out.print(μ1Denominator[x] + " + ");
         }
         System.out.print(") = ");
         double sum1 = 0;
-        for(int x=0; x< μ1Numerator.length; x++){
-            sum1 = sum1 +  μ1Numerator[x];
+        for (int x = 0; x < μ1Numerator.length; x++) {
+            sum1 = sum1 + μ1Numerator[x];
         }
 
         double sum2 = 0;
-        for(int x=0; x< μ1Numerator.length; x++){
-            sum2 = sum2 +  μ1Denominator[x];
+        for (int x = 0; x < μ1Numerator.length; x++) {
+            sum2 = sum2 + μ1Denominator[x];
         }
-        System.out.print((double) Math.round((sum1/sum2)*100)/100);
+        System.out.print((double) Math.round((sum1 / sum2) * 100) / 100);
 
-        double firstMean = (double) Math.round((sum1/sum2)*100)/100;
+        double firstMean = (double) Math.round((sum1 / sum2) * 100) / 100;
         System.out.println();
 
         ///////////////////////////////////////////////////////////
         System.out.println();
         System.out.println();
-        System.out.print("μ2 = (" );
+        System.out.print("μ2 = (");
 
-        int []  μ2Numerator = new int[10]; //change this to random
-        int []  μ2Denominator = new int[10]; //change this to random
+        int[] μ2Numerator = new int[16]; //change this to random
+        int[] μ2Denominator = new int[frequency.length]; //change this to random
 
 
-        for(int x= 10; x<greyLevels.length;x++){
-            μ2Numerator[x] = greyLevels[x]*frequency[x];
-            System.out.print(μ1Numerator[x]+" + ");
+        for (int x = 10; x < greyLevels.length; x++) {
+            μ2Numerator[x] = greyLevels[x] * frequency[x];
+            System.out.print(μ2Numerator[x] + " + ");
+
         }
-        System.out.print(") / ");
-        for(int x= 10; x<greyLevels.length;x++){
-            μ2Denominator[x] = μ2Denominator[x]+frequency[x];
-            System.out.print(μ1Denominator[x]+" + ");
+        System.out.print(") /");
+        for (int x = 10; x < greyLevels.length; x++) {
+            μ2Denominator[x] = +μ2Denominator[x] + frequency[x];
+            System.out.print(μ2Denominator[x] + " + ");
+
         }
         System.out.print(") = ");
         double sum3 = 0;
-        for(int x=0; x< μ2Numerator.length; x++){
-            sum3 = sum3 +  μ2Numerator[x];
+        for (int x = 0; x < μ2Numerator.length; x++) {
+            sum3 = sum3 + μ2Numerator[x];
         }
 
         double sum4 = 0;
-        for(int x=0; x< μ2Numerator.length; x++){
-            sum4 = sum4 +  μ2Denominator[x];
+        for (int x = 0; x < μ2Denominator.length; x++) {
+            sum4 = sum4 + μ2Denominator[x];
         }
-        System.out.print((double) Math.round((sum1/sum2)*100)/100);
+        System.out.print((double) Math.round((sum3 / sum4) * 100) / 100);
 
-        double secondMean = (double) Math.round((sum1/sum2)*100)/100;
+        double secondMean = (double) Math.round((sum1 / sum2) * 100) / 100;
+        System.out.println();
 
-        ///////////////////////////////////////////////////////////
+
 
     }
 
